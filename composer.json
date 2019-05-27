@@ -1,0 +1,28 @@
+{
+    "name": "knappster/wordpress-framework",
+    "authors": [
+        {
+            "name": "Carl Knapp",
+            "email": "kn4ppster@gmail.com"
+        }
+    ],
+    "type": "project",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "johnpbloch/wordpress": "^5.2",
+        "wpackagist-plugin/wordpress-seo": "^11.2",
+        "wpackagist-plugin/advanced-custom-fields": "^5.8",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wp-core",
+        "installer-paths": {
+            "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+        }
+    }
+}
