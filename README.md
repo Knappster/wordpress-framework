@@ -37,3 +37,13 @@ To login to the Wordpress admin you'll need to add the wp-core directory to the 
 
 	https://wordpress.local/wp-core/wp-admin
 
+
+## Building a new theme/site:
+
+When using this framework to build a new theme/site you can include required Wordpress plugins using composer and the https://wpackagist.org/ repo.
+
+	composer require seo-wordpress
+
+This will install the plugin into the plugins folder ready for you to use in Wordpress. No need to download and save plugins to the repository anymore.
+
+__TODO:__ Add the ability to save plugins not included in the wpackagist repo, such as paid for plugin downloads.
