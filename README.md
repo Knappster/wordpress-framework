@@ -59,4 +59,12 @@ If you need an image pulled across to the themes assets folder include it in the
 
 	import img from './images/file.png';
 
+To run a development build that watches for changes, run:
 
+	npm run watch
+
+This also has the Live Reload plugin configured. If you have the Live Reload plugin enabled in your browser it'll refresh the page after webpack finishes a build.
+
+To build production ready assets simply run:
+
+	npm run build

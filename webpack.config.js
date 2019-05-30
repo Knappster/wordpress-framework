@@ -21,7 +21,7 @@ module.exports = {
 		, publicPath: process.env.PUBLIC_RELATIVE_PATH
 	}
 	, devtool: 'hidden-source-map'
-	, mode: 'production'
+	, mode: 'development'
 	, module: {
 		rules: [
 			{
