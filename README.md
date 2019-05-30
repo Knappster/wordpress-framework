@@ -23,7 +23,7 @@ Webpack path settings are contained in the same .env file. If you need to rename
 
 ## 3:
 
-Set the 'public' folder as your webroot. When you've finished running the Wordpress installer ensire that the 'siteurl' and 'home' URL's are set correctly.
+Set the 'public' folder as your webroot. When you've finished running the Wordpress installer ensure that the 'siteurl' and 'home' URLs are set correctly.
 
 The 'siteurl' option requires the directory of the Wordpress core 'wp-core':
 
@@ -36,3 +36,4 @@ The 'siteurl' option requires the directory of the Wordpress core 'wp-core':
 To login to the Wordpress admin you'll need to add the wp-core directory to the URL:
 
 	https://wordpress.local/wp-core/wp-admin
+
