@@ -47,3 +47,16 @@ When using this framework to build a new theme/site you can include required Wor
 This will install the plugin into the plugins folder ready for you to use in Wordpress. No need to download and save plugins to the repository anymore.
 
 __TODO:__ Add the ability to save plugins not included in the wpackagist repo, such as paid for plugin downloads.
+
+
+## Webpack:
+
+Webpack takes all the assets from the assets folder, compiles and minifies them into a assets folder within the theme directory. Config of these paths are set within the .env file.
+
+Images are only included in the output assets folder if they're referenced with the stylesheets, webpack doesn't parse any of the php files within the theme.
+
+If you need an image pulled across to the themes assets folder include it in the /assets/index.js file:
+
+	import img from './images/file.png';
+
+
