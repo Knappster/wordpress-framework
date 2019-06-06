@@ -46,7 +46,7 @@ When using this framework to build a new theme/site you can include required Wor
 
 This will install the plugin into the plugins folder ready for you to use in Wordpress. No need to download and save plugins to the repository anymore.
 
-__TODO:__ Add the ability to save plugins not included in the wpackagist repo, such as paid for plugin downloads.
+If a plugin can't be installed via the package manager you can manually add a plugin to the project by saving the plugin folder to the '/plugins' directory. Running a composer install or update will copy the plugins from the that folder to the public plugins folder (/public/wp-content/plugins/). Note that adding the plugin manually will include all the plugins files within the project repo.
 
 
 ## Webpack:
