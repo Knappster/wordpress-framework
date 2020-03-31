@@ -1,5 +1,6 @@
 composer.phar
 composer.lock
+package-lock.json
 .env
 .DS_Store
 .sass_cache
