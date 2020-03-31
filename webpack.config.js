@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const dotenv = require('dotenv').config();
 
 const ImageminPlugin = require("imagemin-webpack");
@@ -9,6 +9,7 @@ const imageminJpegtran = require("imagemin-jpegtran");
 const imageminOptipng = require("imagemin-optipng");
 const imageminSvgo = require("imagemin-svgo");
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
@@ -25,7 +26,18 @@ module.exports = {
 	, module: {
 		rules: [
 			{
-				test: /\.scss$/
+				test: /\.vue$/,
+				loader: 'vue-loader'
+			}
+			, {
+				test: /\.js$/
+				, exclude: /node_modules/
+				, use: {
+					loader: 'babel-loader'
+				}
+			}
+			, {
+				test: /\.(sa|sc|c)ss$/
 				, use: [
 					{
 						loader: MiniCssExtractPlugin.loader
@@ -71,10 +83,20 @@ module.exports = {
 					}
 				}]
 			}
+			, {
+				test: /\.mp4$/
+				, use: [{
+					loader: 'file-loader'
+					, options: {
+						name: '[name].[ext]'
+						, outputPath: 'videos/'
+					}
+				}]
+			}
 		]
 	}
 	, plugins: [
-		new CleanWebpackPlugin([process.env.THEME_ASSETS_FOLDER_NAME], {root: path.resolve(__dirname, process.env.THEME_ROOT_PATH)})
+		new CleanWebpackPlugin()
 		, new MiniCssExtractPlugin({
 			filename: 'css/styles.min.css'
 		})
@@ -98,6 +120,7 @@ module.exports = {
 				]
 			}
 		})
+		, new VueLoaderPlugin()
 		, new LiveReloadPlugin()
 	]
 };

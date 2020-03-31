@@ -1,9 +1,7 @@
 module.exports = {
 	plugins: {
 		'postcss-import': {}
-		, 'css-mqpacker': {
-			sort: true
-		}
+		, 'postcss-sort-media-queries': {}
 		, 'cssnano': {}
 	},
 };
