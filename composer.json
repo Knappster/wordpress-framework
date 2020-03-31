@@ -1,5 +1,6 @@
 {
     "name": "knappster/wordpress-framework",
+    "description": "Wordpress boilerplate with Docker, Composer, Webpack and a few other nice things",
     "authors": [
         {
             "name": "Carl Knapp",
