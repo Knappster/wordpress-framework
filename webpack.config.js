@@ -18,8 +18,8 @@ module.exports = {
 	}
 	, output: {
 		filename: 'js/[name].bundle.js'
-		, path: path.resolve(__dirname, process.env.THEME_ROOT_PATH + process.env.THEME_ASSETS_FOLDER_NAME + '/')
-		, publicPath: process.env.PUBLIC_RELATIVE_PATH
+		, path: path.resolve('public', process.env.CONTENT_NAME, 'themes', process.env.THEME_NAME, 'assets')
+		, publicPath: '../'
 	}
 	, devtool: 'hidden-source-map'
 	, mode: 'development'

@@ -18,7 +18,7 @@
         "johnpbloch/wordpress": "^5.2",
         "wpackagist-plugin/wordpress-seo": "^13.4",
         "wpackagist-plugin/advanced-custom-fields": "^5.8",
-        "vlucas/phpdotenv": "^3.3",
+        "vlucas/phpdotenv": "^4.1",
         "slowprog/composer-copy-file": "^0.3.1"
     },
     "scripts": {
@@ -30,7 +30,7 @@
         ]
     },
     "extra": {
-        "wordpress-install-dir": "public/wp-core",
+        "wordpress-install-dir": "public/wp",
         "installer-paths": {
             "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
         },

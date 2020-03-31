@@ -5,7 +5,7 @@ package-lock.json
 .DS_Store
 .sass_cache
 /vendor/
-/public/wp-core/
+/public/wp/
 /public/wp-content/plugins/
 /node_modules/
 

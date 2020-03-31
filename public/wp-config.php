@@ -5,21 +5,35 @@ $webroot_dir = $root_dir.'/public';
 require_once $root_dir.'/vendor/autoload.php';
 
 // Load environment variables.
-$dotenv = Dotenv\Dotenv::create($root_dir);
-$dotenv->load();
+$dotenv = Dotenv\Dotenv::createImmutable($root_dir);
+
+if (file_exists($root_dir . '/.env')) {
+    $dotenv->load();
+    $dotenv->required([
+        'WP_HOME'
+    ]);
+
+    if (!getenv('DB_HOST')) {
+        $dotenv->required([
+            'DB_NAME'
+            , 'DB_USER'
+            , 'DB_PASSWORD'
+        ]);
+    }
+}
 
 // Custom content URLs.
-if (!defined('WP_HOME') && isset($_ENV['WP_HOME'])) {
-    define('WP_HOME', $_ENV['WP_HOME']);
+if (!defined('WP_HOME') && getenv('WP_HOME')) {
+    define('WP_HOME', getenv('WP_HOME'));
 }
 if (!defined('WP_SITEURL') && defined('WP_HOME')) {
-    define('WP_SITEURL', WP_HOME.'/wp-core');
+    define('WP_SITEURL', WP_HOME.'/wp');
 }
 if (!defined('WP_CONTENT_DIR')) {
-    define('WP_CONTENT_DIR', dirname(__FILE__).'/wp-content');
+    define('WP_CONTENT_DIR', dirname(__FILE__).'/'.getenv('CONTENT_NAME'));
 }
 if (!defined('WP_CONTENT_URL') && defined('WP_HOME')) {
-    define('WP_CONTENT_URL', WP_HOME.'/wp-content');
+    define('WP_CONTENT_URL', WP_HOME.'/'.getenv('CONTENT_NAME'));
 }
 
 /**
@@ -43,22 +57,22 @@ if (!defined('WP_CONTENT_URL') && defined('WP_HOME')) {
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', $_ENV['DB_NAME'] );
+define('DB_NAME', getenv('DB_NAME'));
 
 /** MySQL database username */
-define( 'DB_USER', $_ENV['DB_USER'] );
+define('DB_USER', getenv('DB_USER'));
 
 /** MySQL database password */
-define( 'DB_PASSWORD', $_ENV['DB_PASSWORD'] );
+define('DB_PASSWORD', getenv('DB_PASSWORD'));
 
 /** MySQL hostname */
-define( 'DB_HOST', $_ENV['DB_HOST'] );
+define('DB_HOST', getenv('DB_HOST')?: 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define('DB_COLLATE', '');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -86,7 +100,7 @@ define('NONCE_SALT',       'DV-v/@MAxiKMmeMy=xdN}.|-F~4Fg;|bHA[25*Uc?4A(KqR=unV1
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = getenv('DB_PREFIX')?: 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -100,13 +114,14 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', $_ENV['WP_DEBUG'] );
+define('WP_DEBUG', getenv('WP_DEBUG')?: false);
+define('WP_DEBUG_LOG', getenv('WP_DEBUG_LOG')?: false);
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', dirname( __FILE__ ) . '/wp-core/' );
+    define( 'ABSPATH', dirname( __FILE__ ) . '/wp/' );
 }
 
 /** Sets up WordPress vars and included files. */
