@@ -14,11 +14,11 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
 	entry: {
-		app: './assets/index.js'
+		app: './index.js'
 	}
 	, output: {
 		filename: 'js/[name].bundle.js'
-		, path: path.resolve('public', process.env.CONTENT_NAME, 'themes', process.env.THEME_NAME, 'assets')
+		, path: path.resolve('../public', process.env.CONTENT_NAME, 'themes', process.env.THEME_NAME, 'assets')
 		, publicPath: '../'
 	}
 	, devtool: 'hidden-source-map'

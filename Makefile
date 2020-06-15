@@ -1,30 +1,30 @@
 
-.PHONY: composer composer-install composer-update npm npm-install install watch dev build
+.PHONY: composer composer-install composer-update npm npm-install npm-watch npm-dev npm-build install
 
 composer:
-	docker run -it --rm -v $(CURDIR):/app -w=/app composer /bin/bash
+	docker run -it --rm -v $(PWD):/app -w=/app composer /bin/bash
 
 composer-install:
-	docker run -it --rm -v $(CURDIR):/app -w=/app composer install
+	docker run -it --rm -v $(PWD):/app -w=/app composer install
 
 composer-update:
-	docker run -it --rm -v $(CURDIR):/app -w=/app composer update
+	docker run -it --rm -v $(PWD):/app -w=/app composer update
 
 npm:
-	docker run -it --rm -v $(CURDIR):/app -w=/app node /bin/bash
+	docker run -it --rm -v $(PWD)/assets:/app -w=/app node /bin/bash
 
 npm-install:
-	docker run -it --rm -v $(CURDIR):/app -w=/app node npm install
+	docker run -it --rm -v $(PWD)/assets:/app -w=/app node npm install
+
+npm-watch:
+	docker run -it --rm -p 127.0.0.1:35729:35729 -v $(PWD)/assets:/app -w=/app node npm run watch
+
+npm-dev:
+	docker run -it --rm -v $(PWD)/assets:/app -w=/app node npm run dev
+
+npm-build:
+	docker run -it --rm -v $(PWD)/assets:/app -w=/app node npm run build
 
 install:
-	docker run -it --rm -v $(CURDIR):/app -w=/app composer install \
-	&& docker run -it --rm -v $(CURDIR):/app -w=/app node npm install
-
-watch:
-	docker run -it --rm -p 127.0.0.1:35729:35729 -v $(CURDIR):/app -w=/app node npm run watch
-
-dev:
-	docker run -it --rm -v $(CURDIR):/app -w=/app node npm run dev
-
-build:
-	docker run -it --rm -v $(CURDIR):/app -w=/app node npm run build
+	docker run -it --rm -v $(PWD):/app -w=/app composer install \
+	&& docker run -it --rm -v $(PWD)/assets:/app -w=/app node npm install

@@ -1,13 +1,13 @@
 {
     "name": "knappster/wordpress-framework",
-    "description": "Wordpress boilerplate with Docker, Composer, Webpack and a few other nice things",
     "authors": [
         {
             "name": "Carl Knapp",
             "email": "kn4ppster@gmail.com"
         }
     ],
-    "type": "project",
+	"type": "project",
+	"description": "Small boilerplate for Wordpress projects.",
     "repositories":[
         {
             "type":"composer",
@@ -15,27 +15,13 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "^5.2",
-        "wpackagist-plugin/wordpress-seo": "^13.4",
-        "wpackagist-plugin/advanced-custom-fields": "^5.8",
-        "vlucas/phpdotenv": "^4.1",
-        "slowprog/composer-copy-file": "^0.3.1"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ],
-        "post-update-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ]
+		"wpackagist-plugin/classic-editor": "^1.5",
+        "wpackagist-plugin/wordpress-seo": "^12.1",
+        "wpackagist-plugin/better-wp-security": "^7.4"
     },
     "extra": {
-        "wordpress-install-dir": "public/wp",
         "installer-paths": {
             "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
-        },
-        "copy-file": {
-            "plugins/": "public/wp-content/plugins/?"
         }
     }
 }
