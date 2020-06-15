@@ -2,7 +2,7 @@
 .PHONY: up down composer composer-install composer-update npm npm-install npm-watch npm-dev npm-build install
 
 up:
-	docker-compose up -dev
+	docker-compose up -d
 
 down:
 	docker-compose down
