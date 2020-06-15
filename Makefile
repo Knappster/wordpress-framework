@@ -1,5 +1,11 @@
 
-.PHONY: composer composer-install composer-update npm npm-install npm-watch npm-dev npm-build install
+.PHONY: up down composer composer-install composer-update npm npm-install npm-watch npm-dev npm-build install
+
+up:
+	docker-compose up -dev
+
+down:
+	docker-compose down
 
 composer:
 	docker run -it --rm -v $(PWD):/app -w=/app composer /bin/bash
