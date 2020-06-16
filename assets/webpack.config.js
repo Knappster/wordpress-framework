@@ -95,7 +95,10 @@ module.exports = {
 		]
 	}
 	, plugins: [
-		new CleanWebpackPlugin()
+		new CleanWebpackPlugin({
+			cleanStaleWebpackAssets: false
+			, protectWebpackAssets: false
+		})
 		, new MiniCssExtractPlugin({
 			filename: 'css/styles.min.css'
 		})
@@ -104,15 +107,21 @@ module.exports = {
 			, cache: true
 			, imageminOptions: {
 				plugins: [
-					imageminJpegtran({
-						progressive: true
-					})
-					, imageminOptipng({
-						optimizationLevel: 5
-					})
-					, imageminSvgo({
-						removeViewBox: false
-					})
+					[
+						'jpegtran', {
+							progressive: true
+						}
+					]
+					, [
+						'optipng', {
+							optimizationLevel: 5
+						}
+					]
+					, [
+						'svgo', {
+							removeViewBox: false
+						}
+					]
 				]
 			}
 		})
