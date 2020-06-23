@@ -7,8 +7,6 @@
 
 	<title><?php wp_title(); ?></title>
 
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link rel="shortcut icon" type="image/png" href="<?php echo IMAGES; ?>/favicon.png">
 
 	<script>(function(){document.documentElement.className='js'})();</script>

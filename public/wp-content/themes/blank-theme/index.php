@@ -6,20 +6,13 @@ $page_id = ('page' == get_option('show_on_front')? get_option('page_for_posts') 
 ?>
 
 <!-- Page Hero -->
-<?php if ( get_field('page_hero_content', $page_id) ) : ?>
 	<section class="page-hero">
 		<div class="container">
 
-		<?php the_field('page_hero_content', $page_id); ?>
+			<h1>Page Hero</h1>
 
 		</div>
 	</section>
-<?php
-	$image = get_field('page_hero_image', $page_id);
-	echo get_page_hero_image_css($image);
-
-endif;
-?>
 <!-- End Page Hero -->
 
 <!-- Page Posts List -->

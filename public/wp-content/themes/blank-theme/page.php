@@ -6,16 +6,16 @@
 ?>
 
 <!-- Page Hero -->
-<?php if ( get_field('page_hero_content', $page_id) ) : ?>
-	<section class="page-hero">
+<?php if ( get_field('hero', $page_id) ) : ?>
+	<section class="hero">
 		<div class="container">
 
-		<?php the_field('page_hero_content'); ?>
+		<?php the_field('hero'); ?>
 
 		</div>
 	</section>
 <?php
-	$image = get_field('page_hero_image');
+	$image = get_field('hero_image');
 	echo get_page_hero_image_css($image);
 
 endif;
@@ -38,23 +38,17 @@ endif;
 
 
 <?php // ACF repeater fields
-	$rows = get_field('page_blocks');
-	if ($rows) :
-		foreach ($rows as $row) :
-			$id = !empty($row['id']) ? 'id="'.$row['id'].'" ' : '';
-?>
-
-	<section <?php echo $id; ?>class="panel <?php echo $row['class']; ?>">
-		<div class="container">
-
-			<?php echo $row['content']; ?>
-
-		</div>
-	</section>
-
-<?php
-		endforeach;
-	endif;
+	$panels = get_field('panels');
+	if ($panels) {
+		foreach ($panels as $panel) {
+			echo '<section '.(!empty($panel['id'])? 'id="'.$panel['id'].'" ' : '')
+				.'class="panel'.(!empty($panel['class'])? ' panel--'.$panel['class'] : '').'">'
+					.'<div class="container">'
+						.(!empty($panel['content'])? $panel['content'] : '')
+					.'</div>'
+				.'</section>';
+		}
+	}
 ?>
 <!-- End main content -->
 

@@ -1,7 +1,7 @@
 <?php
 get_header(); ?>
 
-	<section class="page-hero">
+	<section class="hero">
 		<div class="container">
 
 		<h1>Oops! That page can&rsquo;t be found.</h1>
@@ -9,7 +9,7 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<section class="panel -main-content">
+	<section class="panel panel--main-content">
 		<div class="container">
 
 			<p>It looks like nothing was found at this location.</p>

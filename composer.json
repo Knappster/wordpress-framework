@@ -16,7 +16,7 @@
     ],
     "require": {
 		"wpackagist-plugin/classic-editor": "^1.5",
-        "wpackagist-plugin/wordpress-seo": "^12.1",
+        "wpackagist-plugin/wordpress-seo": "^14.3",
         "wpackagist-plugin/better-wp-security": "^7.4"
     },
     "extra": {

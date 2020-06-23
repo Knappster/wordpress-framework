@@ -1,7 +1,7 @@
 <?php
 // Define constants.
 define('THEMEROOT', get_stylesheet_directory_uri());
-define('IMAGES', THEMEROOT.'/images');
+define('IMAGES', THEMEROOT.'/assets/images');
 
 
 // Disable front end wp admin menu.
