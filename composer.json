@@ -12,15 +12,30 @@
         {
             "type":"composer",
             "url":"https://wpackagist.org"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wp-premium/example-premium-plugin",
+                "type": "wordpress-plugin",
+                "version": "5.9.6",
+                "dist": {
+                    "type": "zip",
+                    "url": "./packages/plugins/example-premium-plugin.zip"
+                }
+            }
         }
     ],
     "require": {
+        "composer/installers": "^1.10",
 		"wpackagist-plugin/classic-editor": "^1.5",
         "wpackagist-plugin/wordpress-seo": "^14.3",
-        "wpackagist-plugin/better-wp-security": "^7.4"
+        "wpackagist-plugin/better-wp-security": "^7.4",
+        "wp-premium/example-premium-plugin": "^5.9.6"
     },
     "extra": {
         "installer-paths": {
+            "public/wp-content/themes/{$name}/": ["type:wordpress-theme"],
             "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
         }
     }
