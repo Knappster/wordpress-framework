@@ -13,11 +13,17 @@ services:
             MYSQL_PASSWORD: wordpress
 
     wordpress:
-        depends_on:
-            - db
-        image: wordpress:latest
+        build:
+            context: .
+            dockerfile: ./docker/wordpress/Dockerfile
+            args:
+                - UID=${UID}
+                - GID=${GID}
+        image: carlknappdev/wordpress
+        user: "${UID}:${GID}"
         ports:
             - "80:80"
+            - "443:443"
         restart: always
         environment:
             WORDPRESS_DB_HOST: db:3306
