@@ -1,0 +1,118 @@
+html {
+  box-sizing: border-box;
+  font-size: $font-size-mobile;
+  font-family: $font-family;
+  line-height: $line-height;
+  min-height: 100%;
+  height: 100%;
+  color: color('dark');
+
+  @include bp(lap) {
+    font-size: $font-size;
+  }
+}
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: color('dark');
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: color('accent');
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: color('ui');
+  margin: 40px 0;
+  clear: both;
+}
+
+h1 {
+  font-size: $h1-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h1-size;
+  }
+}
+
+h2 {
+  font-size: $h2-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h2-size;
+  }
+}
+
+h3 {
+  font-size: $h3-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h3-size;
+  }
+}
+
+h4 {
+  font-size: $h4-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h4-size;
+  }
+}
+
+h5 {
+  font-size: $h5-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h5-size;
+  }
+}
+
+h6 {
+  font-size: $h6-size-mobile;
+
+  @include bp(lap) {
+    font-size: $h6-size;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+  margin-top: 0;
+  margin-bottom: 1em;
+}

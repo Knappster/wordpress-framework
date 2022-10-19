@@ -1,3 +1,3 @@
-
-import './styles/styles.scss';
-import './js/script.js';
+// eslint-disable-next-line import/no-unresolved
+import './scss/styles.scss';
+import './js/script';
