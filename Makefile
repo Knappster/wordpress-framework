@@ -24,13 +24,13 @@ docker-build:
 	env UID=${UID} GID=${GID} docker-compose build
 
 composer:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app composer /bin/bash
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app wordpress/composer /bin/bash
 
 composer-install:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app composer install
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app wordpress/composer install
 
 composer-update:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app composer update
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app wordpress/composer update
 
 npm:
 	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts /bin/bash
