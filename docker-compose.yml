@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     volumes:
       - db_data:/var/lib/mysql
-    restart: always
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: wordpress
@@ -20,18 +20,18 @@ services:
         - UID=${UID}
         - GID=${GID}
     image: carlknappdev/wordpress
-    user: "${UID}:${GID}"
+    user: '${UID}:${GID}'
     ports:
-      - "80:80"
-      - "443:443"
-    restart: always
+      - '80:80'
+      - '443:443'
+    restart: on-failure
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_TABLE_PREFIX: wp_
-      WORDPRESS_DEBUG: "true"
+      WORDPRESS_DEBUG: 'true'
     volumes:
       - ./public:/var/www/html
 
@@ -51,12 +51,13 @@ services:
     depends_on:
       - db
     image: phpmyadmin/phpmyadmin
-    restart: always
+    restart: on-failure
     ports:
-      - "8080:80"
+      - '8080:80'
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
+      UPLOAD_LIMIT: 50M
 
 volumes:
   db_data: {}
