@@ -5,7 +5,7 @@ define('ASSETPATHS', get_assets());
 
 function get_assets()
 {
-    $assets_map = THEMEROOT . '/assets/assets-manifest.json';
+    $assets_map = get_stylesheet_directory() . '/assets/assets-manifest.json';
 
     if (file_exists($assets_map)) {
         return json_decode(file_get_contents($assets_map), true);
@@ -17,7 +17,7 @@ function get_assets()
 function enqueue_style()
 {
     if (array_key_exists('app.css', ASSETPATHS)) {
-        wp_enqueue_style('core', THEMEROOT . '/assets/' . ASSETPATHS['app.css'], false);
+        wp_enqueue_style('core', THEMEROOT . '/assets/' . ASSETPATHS['app.css'], [], false, 'all');
     }
 }
 
