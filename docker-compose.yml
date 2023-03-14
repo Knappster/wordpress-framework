@@ -2,15 +2,15 @@ version: '3.3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mariadb:10
     volumes:
       - db_data:/var/lib/mysql
     restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
 
   wordpress:
     build:
@@ -57,6 +57,8 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
+      PMA_USER: wordpress
+      PMA_PASSWORD: wordpress
       UPLOAD_LIMIT: 50M
 
 volumes:
