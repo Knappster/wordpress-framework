@@ -33,21 +33,21 @@ composer-update:
 	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app wordpress/composer update
 
 npm:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts /bin/bash
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 /bin/bash
 
 npm-install:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts npm install
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 npm install
 
 npm-update:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts npm update
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 npm update
 
 npm-watch:
-	docker run -it --rm -p 127.0.0.1:35729:35729 --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts npm run watch
+	docker run -it --rm -p 127.0.0.1:35729:35729 --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 npm run watch
 
 npm-dev:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts npm run dev
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 npm run dev
 
 npm-build:
-	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:lts npm run build
+	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app/assets node:18 npm run build
 
 install: docker-build composer-install npm-install npm-dev
