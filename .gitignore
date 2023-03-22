@@ -1,5 +1,4 @@
 composer.phar
-composer.lock
 .env
 .DS_Store
 /vendor/
@@ -16,6 +15,7 @@ composer.lock
 !/public/wp-salt.php
 
 /public/wp-content/*
+!/public/wp-content/uploads/
 !/public/wp-content/themes/
 
 /public/wp-content/themes/*
