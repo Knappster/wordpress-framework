@@ -1,4 +1,4 @@
-FROM wordpress:php8.1-apache
+FROM wordpress:php8.2-apache
 
 ARG UID
 ARG GID
