@@ -15,13 +15,13 @@ export USER
 .PHONY: up down docker-build composer composer-install composer-update npm npm-install npm-update npm-watch npm-dev npm-build install
 
 up:
-	env UID=${UID} GID=${GID} docker-compose up -d
+	env UID=${UID} GID=${GID} docker compose up -d
 
 down:
-	env UID=${UID} GID=${GID} docker-compose down
+	env UID=${UID} GID=${GID} docker compose down
 
 docker-build:
-	env UID=${UID} GID=${GID} docker-compose build
+	env UID=${UID} GID=${GID} docker compose --profile dev build
 
 composer:
 	docker run -it --rm --user ${UID}:${GID} -v ${PWD}:/app -w=/app wordpress/composer /bin/bash
